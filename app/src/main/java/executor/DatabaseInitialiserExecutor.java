@@ -39,6 +39,7 @@ public class DatabaseInitialiserExecutor {
         // Connect to the database
         Connection connection = databaseInitialiser.connectToDatabase(dbFile);
 
+        // create database tables
         try {
             new ProductOperation().createTable(connection);
             new CategoryOperation().createTable(connection);
@@ -48,11 +49,13 @@ public class DatabaseInitialiserExecutor {
             e.printStackTrace();
         }
 
+        // get api response
         Product product = databaseInitialiser.readResponse(Product.class, productUrl);
         Category category = databaseInitialiser.readResponse(Category.class, categoryUrl);
         Brand brand = databaseInitialiser.readResponse(Brand.class, brandUrl);
         Order order = databaseInitialiser.readResponse(Order.class, orderUrl);
 
+        // insert to tables
         try {
             new ProductOperation().insertData(connection, product);
             new CategoryOperation().insertData(connection, category);

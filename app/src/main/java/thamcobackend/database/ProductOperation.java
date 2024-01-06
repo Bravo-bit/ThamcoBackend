@@ -18,7 +18,7 @@ public class ProductOperation implements DatabaseOperation<Product> {
             + "product_name TEXT,"
             + "product_description TEXT,"
             + "product_price REAL,"
-            + "product_in_stock INTEGER,"
+            + "product_in_stock TEXT,"
             + "product_expected_restock TEXT"
             + ")";
 
@@ -41,14 +41,14 @@ public class ProductOperation implements DatabaseOperation<Product> {
     public void insertData(Connection connection, Product product) throws SQLException {
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_TO_PRODUCT_TABLE)) {
-            preparedStatement.setString(1, product.getProductEan());
+            preparedStatement.setString(1, product.getEan());
             preparedStatement.setInt(2, product.getCategoryId());
             preparedStatement.setInt(3, product.getBrandId());
-            preparedStatement.setString(4, product.getProductName());
-            preparedStatement.setString(5, product.getProductDescription());
-            preparedStatement.setDouble(6, product.getProductPrice());
-            preparedStatement.setInt(7, product.getProductInStock());
-            preparedStatement.setString(8, product.getProductExpectedRestock());
+            preparedStatement.setString(4, product.getName());
+            preparedStatement.setString(5, product.getDescription());
+            preparedStatement.setDouble(6, product.getPrice());
+            preparedStatement.setString(7, product.isInStock());
+            preparedStatement.setString(8, product.getExpectedRestock());
 
             preparedStatement.executeUpdate();
         }

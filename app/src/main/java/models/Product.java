@@ -1,103 +1,122 @@
 package models;
 
+import java.text.DecimalFormat;
+
 public class Product {
-    private int productId;
-    private String productEan;
-    private int categoryId;
-    private int brandId;
-    private String productName;
-    private String productDescription;
-    private double productPrice;
-    private int productInStock;
-    private String productExpectedRestock;
+    private int Id;
+    private String Ean;
+    private int CategoryId;
+    private String CategoryName;
+    private int BrandId;
+    private String BrandName;
+    private String Name;
+    private String Description;
+    private double Price;
+    private boolean InStock;
+    private String ExpectedRestock;
 
-    public Product() {
-
+    public int getId() {
+        return Id;
     }
 
-    public Product(int productId, String productEan, int categoryId, int brandId, String productName,
-            String productDescription, double productPrice, int productInStock, String productExpectedRestock) {
-        this.productId = productId;
-        this.productEan = productEan;
-        this.categoryId = categoryId;
-        this.brandId = brandId;
-        this.productName = productName;
-        this.productDescription = productDescription;
-        this.productPrice = productPrice;
-        this.productInStock = productInStock;
-        this.productExpectedRestock = productExpectedRestock;
+    public void setId(int id) {
+        Id = id;
     }
 
-    public int getProductId() {
-        return productId;
+    public String getEan() {
+        return Ean;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
-    public String getProductEan() {
-        return productEan;
-    }
-
-    public void setProductEan(String productEan) {
-        this.productEan = productEan;
+    public void setEan(String ean) {
+        Ean = ean;
     }
 
     public int getCategoryId() {
-        return categoryId;
+        return CategoryId;
     }
 
     public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+        CategoryId = categoryId;
+    }
+
+    public String getCategoryName() {
+        return CategoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        CategoryName = categoryName;
     }
 
     public int getBrandId() {
-        return brandId;
+        return BrandId;
     }
 
     public void setBrandId(int brandId) {
-        this.brandId = brandId;
+        BrandId = brandId;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getBrandName() {
+        return BrandName;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setBrandName(String brandName) {
+        BrandName = brandName;
     }
 
-    public String getProductDescription() {
-        return productDescription;
+    public String getName() {
+        return Name;
     }
 
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public double getProductPrice() {
-        return productPrice;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setProductPrice(double productPrice) {
-        this.productPrice = productPrice;
+    public void setDescription(String description) {
+        Description = description;
     }
 
-    public int getProductInStock() {
-        return productInStock;
+    public double getPrice() {
+        return Price;
     }
 
-    public void setProductInStock(int productInStock) {
-        this.productInStock = productInStock;
+    public void setPrice(double price) {
+        Price = price;
     }
 
-    public String getProductExpectedRestock() {
-        return productExpectedRestock;
+    public String isInStock() {
+        return InStock ? "Yes" : "No";
     }
 
-    public void setProductExpectedRestock(String productExpectedRestock) {
-        this.productExpectedRestock = productExpectedRestock;
+    public void setInStock(boolean inStock) {
+        InStock = inStock;
     }
 
+    public String getExpectedRestock() {
+        return ExpectedRestock;
+    }
+
+    public void setExpectedRestock(String expectedRestock) {
+        ExpectedRestock = expectedRestock;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "Id=" + Id +
+                ", Ean='" + Ean + '\'' +
+                ", CategoryId=" + CategoryId +
+                ", CategoryName='" + CategoryName + '\'' +
+                ", BrandId=" + BrandId +
+                ", BrandName='" + BrandName + '\'' +
+                ", Name='" + Name + '\'' +
+                ", Description='" + Description + '\'' +
+                ", Price=" + Price +
+                ", InStock=" + InStock +
+                ", ExpectedRestock='" + ExpectedRestock + '\'' +
+                '}';
+    }
 }
