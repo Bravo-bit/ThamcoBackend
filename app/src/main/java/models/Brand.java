@@ -1,41 +1,33 @@
 package models;
 
 public class Brand {
-    private int brandId;
-    private String brandName;
-    private int brandAvailableProductCount;
 
-    public Brand() {
+    private int Id;
+    private String Name;
+    private int AvailableProductCount;
+
+    public int getId() {
+        return Id;
     }
 
-    public Brand(int brandId, String brandName, int brandAvailableProductCount) {
-        this.brandId = brandId;
-        this.brandName = brandName;
-        this.brandAvailableProductCount = brandAvailableProductCount;
+    public void setId(int id) {
+        Id = id;
     }
 
-    public int getBrandId() {
-        return brandId;
+    public String getName() {
+        return Name;
     }
 
-    public void setBrandId(int brandId) {
-        this.brandId = brandId;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public String getBrandName() {
-        return brandName;
+    public int getAvailableProductCount() {
+        return AvailableProductCount;
     }
 
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
-    }
-
-    public int getBrandAvailableProductCount() {
-        return brandAvailableProductCount;
-    }
-
-    public void setBrandAvailableProductCount(int brandAvailableProductCount) {
-        this.brandAvailableProductCount = brandAvailableProductCount;
+    public void setAvailableProductCount(int availableProductCount) {
+        AvailableProductCount = availableProductCount;
     }
 
 }

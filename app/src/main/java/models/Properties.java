@@ -6,17 +6,15 @@ public class Properties {
     private String productUrl;
     private String categoryUrl;
     private String brandUrl;
-    private String orderUrl;
 
     public Properties() {
     }
 
-    public Properties(String dbFile, String productUrl, String categoryUrl, String brandUrl, String orderUrl) {
+    public Properties(String dbFile, String productUrl, String categoryUrl, String brandUrl) {
         this.dbFile = dbFile;
         this.productUrl = productUrl;
         this.categoryUrl = categoryUrl;
         this.brandUrl = brandUrl;
-        this.orderUrl = orderUrl;
     }
 
     public String getDbFile() {
@@ -50,13 +48,4 @@ public class Properties {
     public void setBrandUrl(String brandUrl) {
         this.brandUrl = brandUrl;
     }
-
-    public String getOrderUrl() {
-        return this.orderUrl;
-    }
-
-    public void setOrderUrl(String orderUrl) {
-        this.orderUrl = orderUrl;
-    }
-
 }

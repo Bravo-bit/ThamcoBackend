@@ -1,53 +1,42 @@
 package models;
 
 public class Category {
-    private int categoryId;
-    private String categoryName;
-    private String categoryDescription;
-    private int categoryAvailableProductCount;
 
-    public Category() {
+    private int Id;
+    private String Name;
+    private String Description;
+    private int AvailableProductCount;
 
+    public int getId() {
+        return Id;
     }
 
-    public Category(int categoryId, String categoryName, String categoryDescription,
-            int categoryAvailableProductCount) {
-        this.categoryId = categoryId;
-        this.categoryName = categoryName;
-        this.categoryDescription = categoryDescription;
-        this.categoryAvailableProductCount = categoryAvailableProductCount;
+    public void setId(int id) {
+        Id = id;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public String getName() {
+        return Name;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setDescription(String description) {
+        Description = description;
     }
 
-    public String getCategoryDescription() {
-        return categoryDescription;
+    public int getAvailableProductCount() {
+        return AvailableProductCount;
     }
 
-    public void setCategoryDescription(String categoryDescription) {
-        this.categoryDescription = categoryDescription;
-    }
-
-    public int getCategoryAvailableProductCount() {
-        return categoryAvailableProductCount;
-    }
-
-    public void setCategoryAvailableProductCount(int categoryAvailableProductCount) {
-        this.categoryAvailableProductCount = categoryAvailableProductCount;
+    public void setAvailableProductCount(int availableProductCount) {
+        AvailableProductCount = availableProductCount;
     }
 
 }

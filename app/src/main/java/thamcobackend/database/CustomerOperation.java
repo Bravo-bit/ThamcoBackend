@@ -31,7 +31,7 @@ public class CustomerOperation implements DatabaseOperation<Customer> {
     }
 
     @Override
-    public void insertData(Connection connection, Customer product) throws SQLException {
+    public void insertData(Connection connection, Customer[] product) throws SQLException {
 
         throw new UnsupportedOperationException("Unimplemented method 'insertData'");
     }

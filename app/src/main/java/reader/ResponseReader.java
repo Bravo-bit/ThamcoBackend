@@ -9,12 +9,11 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 import com.google.gson.Gson;
-
-import models.Product;
+import com.google.gson.reflect.TypeToken;
 
 public class ResponseReader {
 
-    public <T> T readResponse(Class<T> responseType, String url) {
+    public <T> T[] readResponse(TypeToken<T[]> responseTypeToken, String url) {
         try {
             // Make an HTTP request
             URL apiUrl = new URI(url).toURL();
@@ -33,12 +32,10 @@ public class ResponseReader {
                         response.append(line);
                     }
 
-                    String test = response.toString();
-
                     // Parse JSON response
                     Gson gson = new Gson();
-                    Product[] data = gson.fromJson(test, Product[].class);
-                    return null;
+                    T[] data = gson.fromJson(response.toString(), responseTypeToken.getType());
+                    return data;
                 }
             } else {
                 System.out.println("HTTP request failed with response code: " + responseCode);

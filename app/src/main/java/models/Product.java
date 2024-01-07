@@ -1,7 +1,5 @@
 package models;
 
-import java.text.DecimalFormat;
-
 public class Product {
     private int Id;
     private String Ean;

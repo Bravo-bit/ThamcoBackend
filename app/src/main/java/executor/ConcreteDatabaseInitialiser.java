@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.google.gson.reflect.TypeToken;
+
 import reader.ResponseReader;
 
 public class ConcreteDatabaseInitialiser implements DatabaseInitialiser {
@@ -22,7 +24,9 @@ public class ConcreteDatabaseInitialiser implements DatabaseInitialiser {
     }
 
     @Override
-    public <T> T readResponse(Class<T> responseType, String url) {
+    public <T> T[] readResponse(TypeToken<T[]> responseType, String url) {
         return new ResponseReader().readResponse(responseType, url);
     }
+
+
 }

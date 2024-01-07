@@ -1,6 +1,7 @@
 package thamcobackend.database;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -13,6 +14,8 @@ public class BrandOperation implements DatabaseOperation<Brand> {
             + "brand_name TEXT NOT NULL,"
             + "brand_available_product_count INTEGER NOT NULL"
             + ")";
+
+    private static final String INSERT_TO_BRAND_TABLE = "INSERT INTO Brand_tbl (brand_id, brand_name, brand_available_product_count) VALUES (?, ?, ?)";
 
     @Override
     public void createTable(Connection connection) {
@@ -28,9 +31,17 @@ public class BrandOperation implements DatabaseOperation<Brand> {
     }
 
     @Override
-    public void insertData(Connection connection, Brand brand) throws SQLException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insertData'");
+    public void insertData(Connection connection, Brand[] brand) throws SQLException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_TO_BRAND_TABLE)) {
+
+            for (Brand br : brand) {
+                preparedStatement.setInt(1, br.getId());
+                preparedStatement.setString(2, br.getName());
+                preparedStatement.setInt(3, br.getAvailableProductCount());
+            }
+
+            preparedStatement.executeUpdate();
+        }
     }
 
 }

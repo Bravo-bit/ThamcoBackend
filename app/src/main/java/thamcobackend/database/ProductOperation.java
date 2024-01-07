@@ -22,7 +22,7 @@ public class ProductOperation implements DatabaseOperation<Product> {
             + "product_expected_restock TEXT"
             + ")";
 
-    private static final String INSERT_TO_PRODUCT_TABLE = "INSERT INTO Product_tbl (product_ean, category_id, brand_id, product_name, product_description, product_price, product_in_stock, product_expected_restock) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String INSERT_TO_PRODUCT_TABLE = "INSERT INTO Product_tbl (product_id, product_ean, category_id, brand_id, category_name, product_name, product_description, product_price, product_in_stock, product_expected_restock) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     @Override
     public void createTable(Connection connection) {
@@ -38,17 +38,23 @@ public class ProductOperation implements DatabaseOperation<Product> {
     }
 
     @Override
-    public void insertData(Connection connection, Product product) throws SQLException {
+    public void insertData(Connection connection, Product[] products) throws SQLException {
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_TO_PRODUCT_TABLE)) {
-            preparedStatement.setString(1, product.getEan());
-            preparedStatement.setInt(2, product.getCategoryId());
-            preparedStatement.setInt(3, product.getBrandId());
-            preparedStatement.setString(4, product.getName());
-            preparedStatement.setString(5, product.getDescription());
-            preparedStatement.setDouble(6, product.getPrice());
-            preparedStatement.setString(7, product.isInStock());
-            preparedStatement.setString(8, product.getExpectedRestock());
+
+            for (Product product : products) {
+                preparedStatement.setInt(1, product.getId());
+                preparedStatement.setString(1, product.getEan());
+                preparedStatement.setInt(1, product.getCategoryId());
+                preparedStatement.setString(1, product.getCategoryName());
+                preparedStatement.setInt(1, product.getBrandId());
+                preparedStatement.setString(1, product.getBrandName());
+                preparedStatement.setString(1, product.getName());
+                preparedStatement.setString(1, product.getDescription());
+                preparedStatement.setDouble(1, product.getPrice());
+                preparedStatement.setString(1, product.isInStock());
+                preparedStatement.setString(1, product.getExpectedRestock());
+            }
 
             preparedStatement.executeUpdate();
         }
