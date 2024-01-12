@@ -4,9 +4,7 @@ public class Product {
     private int Id;
     private String Ean;
     private int CategoryId;
-    private String CategoryName;
     private int BrandId;
-    private String BrandName;
     private String Name;
     private String Description;
     private double Price;
@@ -37,28 +35,12 @@ public class Product {
         CategoryId = categoryId;
     }
 
-    public String getCategoryName() {
-        return CategoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        CategoryName = categoryName;
-    }
-
     public int getBrandId() {
         return BrandId;
     }
 
     public void setBrandId(int brandId) {
         BrandId = brandId;
-    }
-
-    public String getBrandName() {
-        return BrandName;
-    }
-
-    public void setBrandName(String brandName) {
-        BrandName = brandName;
     }
 
     public String getName() {
@@ -107,9 +89,7 @@ public class Product {
                 "Id=" + Id +
                 ", Ean='" + Ean + '\'' +
                 ", CategoryId=" + CategoryId +
-                ", CategoryName='" + CategoryName + '\'' +
                 ", BrandId=" + BrandId +
-                ", BrandName='" + BrandName + '\'' +
                 ", Name='" + Name + '\'' +
                 ", Description='" + Description + '\'' +
                 ", Price=" + Price +

@@ -16,7 +16,7 @@ public class CategoryOperation implements DatabaseOperation<Category> {
             + "category_available_product_count INTEGER NOT NULL"
             + ")";
 
-    private static final String INSERT_TO_CATEGORY_TABLE = "INSERT INTO Product_tbl (category_id, category_name, category_description, category_available_product_count) VALUES (?, ?, ?, ?)";
+    private static final String INSERT_TO_CATEGORY_TABLE = "INSERT INTO Category_tbl (category_id, category_name, category_description, category_available_product_count) VALUES (?, ?, ?, ?)";
 
     @Override
     public void createTable(Connection connection) {
@@ -41,9 +41,12 @@ public class CategoryOperation implements DatabaseOperation<Category> {
                 preparedStatement.setString(2, category.getName());
                 preparedStatement.setString(3, category.getDescription());
                 preparedStatement.setInt(4, category.getAvailableProductCount());
+
+                preparedStatement.executeUpdate();
             }
 
-            preparedStatement.executeUpdate();
+            System.out.println("Category data has been succefully entered");
+
         }
     }
 

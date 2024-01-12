@@ -38,9 +38,11 @@ public class BrandOperation implements DatabaseOperation<Brand> {
                 preparedStatement.setInt(1, br.getId());
                 preparedStatement.setString(2, br.getName());
                 preparedStatement.setInt(3, br.getAvailableProductCount());
+
+                preparedStatement.executeUpdate();
             }
 
-            preparedStatement.executeUpdate();
+            System.out.println("Brand data has been succefully entered");
         }
     }
 

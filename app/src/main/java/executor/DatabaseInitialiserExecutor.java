@@ -65,6 +65,8 @@ public class DatabaseInitialiserExecutor {
             new ProductOperation().insertData(connection, products);
             new CategoryOperation().insertData(connection, category);
             new BrandOperation().insertData(connection, brand);
+
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

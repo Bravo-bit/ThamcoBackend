@@ -14,15 +14,16 @@ public class ProductOperation implements DatabaseOperation<Product> {
             + "product_ean TEXT NOT NULL,"
             + "category_id INTEGER,"
             + "brand_id INTEGER,"
-            + "category_name TEXT,"
             + "product_name TEXT,"
             + "product_description TEXT,"
             + "product_price REAL,"
-            + "product_in_stock TEXT,"
-            + "product_expected_restock TEXT"
+            + "product_in_stock INTEGER,"
+            + "product_expected_restock TEXT,"
+            + "FOREIGN KEY (category_id) REFERENCES category_tbl(category_id),"
+            + "FOREIGN KEY (brand_id) REFERENCES brand_tbl(brand_id)"
             + ")";
 
-    private static final String INSERT_TO_PRODUCT_TABLE = "INSERT INTO Product_tbl (product_id, product_ean, category_id, brand_id, category_name, product_name, product_description, product_price, product_in_stock, product_expected_restock) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String INSERT_TO_PRODUCT_TABLE = "INSERT INTO Product_tbl (product_id, product_ean, category_id, brand_id, product_name, product_description, product_price, product_in_stock, product_expected_restock) VALUES (?,?,?,?,?,?,?,?,?)";
 
     @Override
     public void createTable(Connection connection) {
@@ -44,19 +45,19 @@ public class ProductOperation implements DatabaseOperation<Product> {
 
             for (Product product : products) {
                 preparedStatement.setInt(1, product.getId());
-                preparedStatement.setString(1, product.getEan());
-                preparedStatement.setInt(1, product.getCategoryId());
-                preparedStatement.setString(1, product.getCategoryName());
-                preparedStatement.setInt(1, product.getBrandId());
-                preparedStatement.setString(1, product.getBrandName());
-                preparedStatement.setString(1, product.getName());
-                preparedStatement.setString(1, product.getDescription());
-                preparedStatement.setDouble(1, product.getPrice());
-                preparedStatement.setString(1, product.isInStock());
-                preparedStatement.setString(1, product.getExpectedRestock());
+                preparedStatement.setString(2, product.getEan());
+                preparedStatement.setInt(3, product.getCategoryId());
+                preparedStatement.setInt(4, product.getBrandId());
+                preparedStatement.setString(5, product.getName());
+                preparedStatement.setString(6, product.getDescription());
+                preparedStatement.setDouble(7, product.getPrice());
+                preparedStatement.setString(8, product.isInStock());
+                preparedStatement.setString(9, product.getExpectedRestock());
+
+                preparedStatement.executeUpdate();
             }
 
-            preparedStatement.executeUpdate();
+            System.out.println("Product data has been succefully entered");
         }
     }
 
